@@ -72,5 +72,5 @@ const Pokedex = (() => {
 
     return Pokedex;
 })();
-
-export default new Pokedex;
+var _Pk = new Pokedex;
+export default _Pk;

@@ -13,11 +13,11 @@ class Nav extends React.Component {
 					iconClassNameRight="muidocs-icon-navigation-expand-more"
 				/>
 				</div>
-				<div className="link">
+				{/*<div className="link">
 					<Link to="/">Home</Link>
 					<Link to="/pokedex">Pokédex</Link>
 					<Link to="/about">About</Link>
-				</div>
+				</div>*/}
 				{this.props.children}
 			</div>
 		);

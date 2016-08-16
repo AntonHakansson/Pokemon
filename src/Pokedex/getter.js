@@ -3,12 +3,12 @@ import cache from 'memory-cache';
 const CACHE_LIMIT = 1000000 * 1000; // 11 days
 
 const getJSON = (url, cb) => {
-    console.log("currently " + cache.size() + " number of entries in cache");
-
     // retrive possible content from volatile memory
     const cachedResult = cache.get(url);
     if (cachedResult !== null) {
         return new Promise((resolve, reject) => {
+          console.log("currently " + cache.size() + " number of entries in cache");
+
             if (cb) {
                 // call callback without errors
                 cb(cachedResult, false);
