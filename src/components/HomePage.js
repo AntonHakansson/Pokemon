@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {GridList, GridTile} from 'material-ui/GridList';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+
 import async from 'async';
 
 import Pokedex from '../Pokedex';
@@ -14,7 +16,7 @@ class HomePage extends React.Component {
     this.state = {pokemonList: []};
 
     Pokedex.getPokemonsList().then(ress => {
-      return ress.results;
+      return ress.results.slice(0, 10);
     }).then(pokemons => {
       async.forEachOf(pokemons, (pokemon) => {
         Pokedex.getPokemonByName(pokemon.name, pokemon => {
@@ -44,15 +46,19 @@ class HomePage extends React.Component {
 
     return(
       <div style={styles.root}>
-        <GridList cellHeight={200} style={styles.gridList}>
-          {this.state.pokemonList.map(pokemon => {
-            return(
-              <GridTile key={pokemon.name} title={pokemon.name} subtitle={<span>{pokemon.types.map(type => {return type.type + " ";})}</span>}>
-                <img src={pokemon.sprites.front_default}></img>
-              </GridTile>
-            );
-          })}
-        </GridList>
+
+      <Card>
+        <CardHeader title={"Pokedex"} />
+          <GridList cellHeight={200} style={styles.gridList}>
+            {this.state.pokemonList.map(pokemon => {
+              return(
+                <GridTile key={pokemon.name} title={pokemon.name} subtitle={<span>{pokemon.types.map(type => {return type.type.name + " ";})}</span>}>
+                  <img src={pokemon.sprites.front_default}></img>
+                </GridTile>
+              );
+            })}
+          </GridList>
+        </Card>
       </div>
     );
   }
