@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import {Link} from "react-router";
+import AppBar from 'material-ui/AppBar';
+
 
 class Nav extends React.Component {
 	render() {
 		return (
 			<div className="nav">
 				<div className="header">
-					<Link to="/"><h1>PoKéMoN</h1></Link>
+				<AppBar
+					title="PoKéMoN"
+					iconClassNameRight="muidocs-icon-navigation-expand-more"
+				/>
 				</div>
 				<div className="link">
 					<Link to="/">Home</Link>
