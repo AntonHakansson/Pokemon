@@ -102,7 +102,14 @@ class PokedexViewer extends React.Component {
               modal={false}
               open={pokemon.dialogOpen}
               onRequestClose={() => {pokemon.dialogOpen = false; this.forceUpdate();}} >
+                <div>
+                  {Object.keys(pokemon.sprites).reverse().map((name, index) => {return <img key={index} src={pokemon.sprites[name]}></img>;})}
+                </div>
+                <span>Name: {pokemon.name}</span>
+                {dialogDivider}
                 <span>Base XP: {pokemon.base_experience}</span>
+                {dialogDivider}
+                <span>Species: {pokemon.pokemon_species.map((specie) => {return (<span>{specie.name}</span>);})}</span>
                 {dialogDivider}
                 <span>Base type: {pokemon.types.map(type => {return type.type.name + " ";})}</span>
                 {dialogDivider}
